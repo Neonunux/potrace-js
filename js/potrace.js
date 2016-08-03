@@ -13,7 +13,7 @@ var context = testImage.getContext('2d');
  };
  img.src = dataURL; */
 
-testImage.addEventListener('click', function () {
+setTimeout(function () {
 	console.log('clicked');
 	// once you have an image...
 
@@ -76,7 +76,7 @@ testImage.addEventListener('click', function () {
 	}
 
 	document.body.appendChild(tempCanvas);
-});
+}, 50);
 
 
 
