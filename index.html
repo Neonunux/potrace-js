@@ -1,28 +1,29 @@
 <html>
-<head>
+	<head>
+		<meta charset="utf-8">
+		<title>Potrace Tests</title>
 
-<title>I AM A SMOKETEST BURN BABY BURN</title>
+	</head>
+	<body>
+		<img id="scream" width="100" height="100" src="img/potrace1.png" alt="The Scream"> <!-- style="display: none;" -->
+		<canvas id="example" width="100" height="100">
+			This text is displayed if your browser does not support HTML5 Canvas.
+		</canvas>
 
-</head>
-<body>
+		<script type="text/javascript" src="js/direction.js"></script>
+		<script type="text/javascript" src="js/bitmap.js"></script>
+		<script type="text/javascript" src="js/path.js"></script>
+		<script type="text/javascript" src="js/drafter.js"></script>
+		<script type="text/javascript" src="js/vector.js"></script>
+		<script type="text/javascript" src="js/straightener-naive.js"></script>
+		<script type="text/javascript" src="js/straightener-complex.js"></script>
+		<script type="text/javascript">
+			// Straightener = StraightenerComplex;
+			Straightener = StraightenerNaive;
+		</script>
+		<script type="text/javascript" src="js/polygon.js"></script>
+		<script type="text/javascript" src="js/pathbuilder.js"></script>
+		<script type="text/javascript" src="js/potrace.js"></script>
 
-<canvas id="example" width="100" height="100">
-This text is displayed if your browser does not support HTML5 Canvas.
-</canvas>
-
-<script type="text/javascript" src="direction.js"></script>
-<script type="text/javascript" src="bitmap.js"></script>
-<script type="text/javascript" src="path.js"></script>
-<script type="text/javascript" src="drafter.js"></script>
-<script type="text/javascript" src="vector.js"></script>
-<script type="text/javascript" src="straightener-naive.js"></script>
-<script type="text/javascript" src="straightener-complex.js"></script>
-<script type="text/javascript">
-    Straightener = StraightenerComplex;
-</script>
-<script type="text/javascript" src="polygon.js"></script>
-<script type="text/javascript" src="pathbuilder.js"></script>
-<script type="text/javascript" src="potrace.js"></script>
-
-</body>
+	</body>
 </html>
