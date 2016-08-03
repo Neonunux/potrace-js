@@ -1,9 +1,8 @@
-README
-
 potrace-js
+==========
 
-A javascript implementation of Peter Selinger's raster to vector image 
-converter [potrace](http://potrace.sourceforge.net/), originally 
+A javascript implementation of Peter Selinger's raster to vector image
+converter [potrace](http://potrace.sourceforge.net/), originally
 implemented in C.
 
 The vague intention is to eventually create a javascript web app, using
@@ -14,24 +13,23 @@ which, may I point out, are built directly into HTML5.
 Tested in Chrome v21.0.1180.75.
 
 Python may have existed at some point.
-(See [thomasballinger](https://github.com/thomasballinger/)'s 
+(See [thomasballinger](https://github.com/thomasballinger/)'s
 [potrace-python](https://github.com/thomasballinger/potrace-python/).)
 
 Developed during hackerschool, summer 2012.
 
------------------------------------------------------------------------
------------------------------------------------------------------------
 
-Some implementation details:
+Some implementation details
+-------------
 
-The BitMap object is one of the "primitives". This essentially 
+The BitMap object is one of the "primitives". This essentially
 represents the image and the methods that a basic image should have.
 
 The Path object is the other "primitive". It represents a single,
-fully cyclical, 2 dimensional path (it can be indexed in either 
-direction, for a theoretically infinite number of iterations), and 
+fully cyclical, 2 dimensional path (it can be indexed in either
+direction, for a theoretically infinite number of iterations), and
 contains the methods necessary to do so. Note that while a path is
-aware of its 2 dimensional nature, and therefore indexes to paired x,y 
+aware of its 2 dimensional nature, and therefore indexes to paired x,y
 coordinates, it does not have any knowledge of the image to which
 these coordinates relate. Indexer objects have two methods, called prev
 and next, which return the previous and next indexer objects. Handy -
@@ -48,7 +46,7 @@ currently 2 implementations of straightener, one inside the file
 "straightener-naive.js" and the other inside "straightener-complex.js".
 The two implementations should be invisibly interchangeable - both are
 called using Object.create, and run using its method "run". At the
-moment, they just return self, but later may instead return the array 
+moment, they just return self, but later may instead return the array
 of arrays holding the longest path segments possible from each vertex,
 instead of the entire straightener object.
 
@@ -61,18 +59,19 @@ There is an additional "helper object" called Direction. It contains
 the 4 coordinate directions north, south, east, and west, and (more
 importantly) handles the meaning of "turn left" and "turn right".
 
-
------------------------------------------------------------------------
-
-A slightly confusing thing about the current implementations: 
+A slightly confusing thing about the current implementations
+-------------
 deciding whether to make a certain type of turn is a member function of
-the Drafter object because it requires knowledge of the image details. 
-Deciding which turn to try in the first place (called the turn policy) 
-is a member of the PathBuilder class because the specific turn policy 
+the Drafter object because it requires knowledge of the image details.
+Deciding which turn to try in the first place (called the turn policy)
+is a member of the PathBuilder class because the specific turn policy
 used is unrelated to the underlying image.
 
 
-THOUGHTS: should straightness be handled inside pathbuilder objects?
+THOUGHTS
+-------------
+
+Should straightness be handled inside pathbuilder objects?
 Should we already be expanding into yet another object? After all,
 straightness is a detail that uses completed paths, not something
 related to paths. The underlying question here is whether paths refers
@@ -80,19 +79,56 @@ strictly to coordinate-based paths, or if vector paths are the real
 meaning in use here!
 
 
-
+timings
+-------------
 7/14/2012: some timing runs:
     371,367,369,371,355,357,358,352,332,364ms with straightener-naive
         avg: 359.6
     412,380,420,401,385,383,393,419,374,369ms with straightener-complex
         avg: 393.6
-    
+
     some possible explanations:
         lack of optimization yet implemented in straightener-complex
         incomplete or incorrect implementation
-        greater startup costs require a larger dataset to reap the 
+        greater startup costs require a larger dataset to reap the
           benefits of the O(n^2) alg over the O(n^3)
 
 
------------------------------------------------------------------------
+Documentation
+-------------
 
+The bulk of the documentation is stored in the `Resources/docs/index.md`
+file in this bundle:
+
+[Read the Documentation for master](https://github.com/Neonunux/potrace-js/blob/master/docs/index.md)
+
+Installation
+------------
+
+All the installation instructions are located in the documentation.
+
+
+License
+-------
+
+This software is created under the GPL v3.0 license. See the complete license :
+
+    LICENSE
+
+Credits
+-------
+
+This software has a complicated story. See the complete :
+
+    CREDITS
+
+About
+-----
+
+potrace-js is a free software.
+See also the list of [contributors](https://github.com/Neonunux/potrace-js/contributors).
+
+Reporting an issue or a feature request
+---------------------------------------
+
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/Neonunux/potrace-js/issues).
